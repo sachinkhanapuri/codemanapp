@@ -1,0 +1,28 @@
+{% extends 'model_pratcise/home.html' %}
+{% block title %}Login{% endblock title %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container mt-5 d-flex flex-column justify-content-center align-items-center">
+    <div class="card bg-secondary">
+        <div class="card-title">
+            <h3 class=" text-center bg-info ">Login Page!!!</h3>  
+        </div>
+        {% if messages %}
+        {% for msg in messages %}
+            <h5 class="text-danger">{{msg}}</h5>
+        {% endfor %}
+        {% endif %}
+        <div class="card-body">
+            <form action="{% url 'login' %}" method='POST'>
+                {% csrf_token %}
+                {{form|crispy}}
+                <input class="btn btn-success"   type="submit" value="submit">
+            </form>   
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

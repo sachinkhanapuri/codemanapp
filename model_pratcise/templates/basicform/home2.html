@@ -1,0 +1,50 @@
+{% extends 'basicform/navbr2.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Home{% endblock title %}
+{% load static %}
+
+  
+{% block content %}
+  
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <h3>Customer:</h3>
+        <hr>
+        <div class="card card-body d-inline text-decoration-none text-center ">
+            <div class="card-header bg-secondary">
+                <h5>CUSTOMER DETAILS:</h5>
+            </div>
+            <table class=" table table-sm border border-secondary">
+                <tr>
+                    <th>Customer_id</th>
+                    <th>Customer_Name</th>
+                    <th>Email_id</th>
+                    <th>Phone</th>
+                
+                    <th>Action</th>
+                </tr>
+                {% for info in customer %}
+                <tr>
+                    <td>{{info.id}}</td>
+                    <td>{{info.name}}</td>
+                    <td>{{info.emailid}}</td>
+                    <td>{{info.phone}}</td>
+                    
+                    <td>
+                        <a class='btn btn-warning d-block' href="{% url 'customer_edit1' info.id %}">edit</a><br>
+                        <a class='btn btn-warning d-block' href="{% url 'customer_update1' info.id %}">delete</a>
+                    </td>  
+                </tr>
+                {% endfor %}
+                        
+            </table>
+                <button class="btn btn-warning "><a href="{% url 'customer_form' %}">Add deatils</a></button>
+        </div>       
+    </div>           
+</div>
+
+              
+   
+{% endblock content %}
+
+   

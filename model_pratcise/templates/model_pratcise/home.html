@@ -1,0 +1,87 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@700&display=swap" rel="stylesheet">
+    <title>{% block title %}Home{% endblock title %}</title>
+</head>
+<body style="background-image: url('static/image/bg4.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed;">
+    
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand " href="#"><img style="width:50%" src="{% static 'image/download.png' %}" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbr1"> <span class="navbar-toggler-icon"></span></button>
+
+                <div class="collapse navbar-collapse" id="navbr1">
+                    <ul class="navbar-nav ml-auto "  >
+                        <li class="nav-item active">
+                          <a class="nav-link ml-5 font-weight-bold text-warning" href="{% url 'homepage' %}">Home</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link ml-5 font-weight-bold text-primary" href="#">About us</a>
+                        </li>
+                        {% if user.is_authenticated %} 
+                    
+                        <li class="nav-item ">
+                            <a class="nav-link ml-5 font-weight-bold text-primary" href="{% url 'index' %}">Service</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link ml-5 mr-4 font-weight-bold text-primary" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item ">
+                            <a class="nav-link ml-5 font-weight-bold text-primary" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link ml-5 font-weight-bold text-primary" href="{% url 'register' %}">Register</a>
+                        </li>
+                        {% endif %}
+                        
+
+                        <!--
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-traget="#drop" href="">dropdown</a>
+
+                            <div class="dropdown-menu" id="drop">
+                                <a class="dropdown-item" href="">first</a>
+                                <a class="dropdown-item" href="">second</a>
+                                <a class="dropdown-item" href="">second</a>
+                                <a class="dropdown-item" href="">third</a>
+                            </div>
+                        </li>
+                        -->
+                        <form class="form-inline" action="{% url 'https://www.google.com/' % }">
+                            <input class=" mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </ul>
+
+                </div>
+            </div> 
+        </div> 
+    </nav>      
+   
+
+{% block content %}
+    <div class="container mt-5 d-flex flex-column justify-content-center align-items-center" ">
+        <h3 class="text-warning">Delivering Deliciousness</h3>
+        <p style="font-weight: bold;" class="text-warning">Ordering food from your favourite resturant just a <span style="color:green">click</span></p>
+        <button class="btn btn-success " type="submit" value="Register"><a class="text-white  text-decoration-none" href="{% url 'register' %}">Register</a></button>
+    </div>
+
+
+{% endblock content %}  
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'model_pratcise/home.html' %}
+{% load crispy_forms_tags %}
+{% block title %}customer_delete{% endblock title %}
+{% load static %}
+
+{% block content %}
+
+<div class='container bg-secondary border border border-info mt-4'>
+   
+    <form class="form-group" action="{% url 'customer_delete' customer.id %}" method="POST">
+    {% csrf_token %}
+    <h3 class='mt-2'>Are you sure want to Delete Cutomer with name: {{customer}}</h3><hr>
+    customer name:{{customer.name}}<br>
+    customer phone:{{customer.phone}}<br>
+    customer emailid:{{customer.emailid}}<br>
+   
+    <input class="btn btn-primary mt-2 mb-2 ml-2 rounded" type="submit" value="submit">
+    <a class="btn btn-primary mt-2 mb-2 ml-2" href="{% url 'index' %}">Cancle</a>
+    </form> 
+ 
+</div>
+
+{% endblock content %}

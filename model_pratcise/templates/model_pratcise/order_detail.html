@@ -1,0 +1,49 @@
+{% extends 'model_pratcise/home.html' %}
+{% load crispy_forms_tags %}
+{% block title %}order_detail{% endblock title %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="row ">
+    <div class="col-sm-12 mt-4">
+        <h3>Order:</h3>
+        <hr>
+       
+        <div class="card card-body d-inline text-decoration-none text-center">
+            <div class="card-header bg-secondary">
+                <h5>ORDER DETAILS:</h5>
+            </div>
+            <table class=" table table-sm border border-secondary">
+                <tr>
+                    <th>Customer_id</th>
+                    <th>Customer_Name</th>
+                    <th>Order_name</th>
+                    <th>Date_created</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                {% for info in order %}
+                <tr>
+                    <td>{{info.customer.id}}</td>
+                    <td>{{info.customer.name}}</td>
+                    <td>{{info.order_name}}</td>
+                    <td>{{info.date_created}}</td>
+                    <td>{{info.status}}</td>
+                    <td>
+                        <a class='btn btn-warning d-block' href="{% url 'order_edit' info.id %}">edit</a><br>
+                        <a class='btn btn-warning d-block' href="{% url 'order_delete' info.id %}">delete</a>
+                    </td>  
+        
+                </tr>
+                {% endfor %}
+                
+            </table>
+
+            <button class="btn btn-warning "><a href="{% url 'index' %}">Back</a></button>
+        </div>       
+    </div>
+</div>
+
+{% endblock content %}

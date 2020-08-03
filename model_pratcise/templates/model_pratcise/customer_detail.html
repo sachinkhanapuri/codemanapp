@@ -1,0 +1,75 @@
+{% extends 'model_pratcise/home.html' %}
+{% load crispy_forms_tags %}
+{% block title %}customer_detail{% endblock title %}
+{% load static %}
+
+{% block content %}
+
+<div class="container  border border border-info mt-4">
+    <div class="row">
+        <div class="col-xl-3">
+            <div class="card mt-4 mb-4">
+                <a class="btn btn-primary mt-2 mb-2 ml-2" href="{% url 'customer_edit' customer1.id %}">Customer update</a>
+                <a class="btn btn-warning mt-2 mb-2 ml-2" href="{% url 'order_list' %}">Add Order</a>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="card mt-4">
+                <h5 class= "bg-secondary">Customer name:{{customer1.name}}</h5> <br>
+                <h5>customer emailid:{{customer1.emailid}}</h5>
+            </div>
+        </div>
+
+        <div class="col-xl-3">
+            <div class="card mt-4"">
+               <h4 class="bg-secondary text-center"> Total Order</h4>
+               <h4 class="text-center">{{order_count1}}</h4>
+            </div>
+        </div>
+    </div>
+
+
+      
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <h3>Customer:</h3>
+        <hr>
+        <div class="card card-body d-inline text-decoration-none text-center ">
+            <div class="card-header bg-secondary">
+                <h5>CUSTOMER DETAILS:</h5>
+            </div>
+            <table class=" table table-sm border border-secondary">
+                <tr>
+                
+                    <th>Customer_id</th>
+                    <th>Customer_Name</th>
+                    <th>Email_id</th>
+                    <th>Phone</th>
+                    <th>Date_created</th>
+                    <th>Order</th>
+                    
+                </tr>
+                {% for info in customer_detail %}
+                <tr>
+                    <td>{{info.customer.id}}</td>
+                    <td>{{info.customer.name}}</td>
+                    <td>{{info.customer.emailid}}</td>
+                    <td>{{info.customer.phone}}</td>
+                    <td>{{info.customer.date_created}}</td>
+                    <td>{{info.order_name}}</td>
+                    
+                    
+                </tr>
+                {% endfor %}
+               
+            </table>
+            <button class="btn btn-warning btn-sm"><a href="{% url 'index' %}">Back</a></button>     
+              
+        </div>       
+    </div>           
+</div>
+   
+</div>
+
+{% endblock content %}

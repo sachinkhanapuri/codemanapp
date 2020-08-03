@@ -1,0 +1,21 @@
+{% extends 'model_pratcise/home.html' %}
+{% block title %}order_edit{% endblock title %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class='d-inline-table text-center align-middle'>
+    <form class="form-group bg-secondary border border border-info mt-2" action="{% url 'order_update' id=order.id %}" method="POST">
+        {% csrf_token %}
+        <h3> Order Edit form:</h3>
+        {{form1|crispy}}
+        
+        <input class="btn btn-primary mt-2 mb-2" type="submit" value="submit">
+    </form>
+</div>
+
+
+
+{% endblock content %}
