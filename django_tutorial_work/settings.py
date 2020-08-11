@@ -81,17 +81,24 @@ WSGI_APPLICATION = 'django_tutorial_work.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-"""DATABASE_ROUTERS = ['path.to.DemoRouter']
-DATABASE_APPS_MAPPING = {
-                        'customer_data':'customers_db'
-                        }"""
-
 DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        #'SERVICE_NAME':'un5pkvef41athu0_devtrxdb_medium.atp.oraclecloud.com',
+        'NAME':'DEVTRXDB',
+        'USER': 'SACHINKUMAR',
+        'PASSWORD':'SAPAStelematics123',
+        'HOST': 'adb.uk-london-1.oraclecloud.com',
+        'PORT': 1522,
+    }
+}
+
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}
+}"""
 
 
 # Password validation
